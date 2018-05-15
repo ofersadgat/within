@@ -20,7 +20,13 @@ describe('Tests for Wallclock', function() {
       '11:00': 330,
       '11:15': 247.5,
       '11:30': 165,
-      '11:45': 247.5,      
+      '11:45': 82.49999999999999,    
+
+      //cover middle cases
+      '6:00': 180,
+      '6:15': 97.50000000000001,
+      '6:30': 14.999999999999986,
+      '6:45': 67.5,
     };
 
     Object.keys(testCases).forEach(function(time){
