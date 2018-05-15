@@ -1,0 +1,18 @@
+"colors": 
+[
+	"red"
+	"green"
+	"blue"
+]
+"falsy": false
+"person": 
+{
+	"age": 20
+	"contact": 
+	{
+		"email": "bob@example.com"
+	}
+	"name": "Bob"
+}
+"pi": 3.14159
+"truthy": true
