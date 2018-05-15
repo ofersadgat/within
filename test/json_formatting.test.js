@@ -9,7 +9,7 @@ const currentDirectory = __dirname;
 describe('Tests for json_formatting', function() {
   it('should export visualize_data', function() {
     expect(json_formatting.visualize_data).to.exist;
-    expect(json_formatting.stringify_data).to.exist;
+    expect(json_formatting.stringifyData).to.exist;
   });
 
   let valueTestCases = {
@@ -27,8 +27,8 @@ describe('Tests for json_formatting', function() {
   };
 
   Object.keys(valueTestCases).forEach(function(input){
-    it('parse_value: ' + input + ' should equal ' + JSON.stringify(valueTestCases[input]), function() {
-      expect(json_formatting.parse_data(input).result).to.equal(valueTestCases[input]);
+    it('parseValue: ' + input + ' should equal ' + JSON.stringify(valueTestCases[input]), function() {
+      expect(json_formatting.parseData(input).result).to.equal(valueTestCases[input]);
     });
   });
 
@@ -38,8 +38,8 @@ describe('Tests for json_formatting', function() {
   };
 
   Object.keys(stringTestCases).forEach(function(input){
-    it('parse_string: ' + input + ' should equal ' + JSON.stringify(stringTestCases[input]), function() {
-      expect(json_formatting.parse_string(input).result).to.equal(stringTestCases[input]);
+    it('parseString: ' + input + ' should equal ' + JSON.stringify(stringTestCases[input]), function() {
+      expect(json_formatting.parseString(input).result).to.equal(stringTestCases[input]);
     });
   });
 
@@ -50,8 +50,8 @@ describe('Tests for json_formatting', function() {
   };
 
   Object.keys(arrayTestCases).forEach(function(input){
-    it('parse_array: ' + input + ' should equal ' + JSON.stringify(arrayTestCases[input]), function() {
-      expect(json_formatting.parse_array(input).result).to.deep.equal(arrayTestCases[input]);
+    it('parseArray: ' + input + ' should equal ' + JSON.stringify(arrayTestCases[input]), function() {
+      expect(json_formatting.parseArray(input).result).to.deep.equal(arrayTestCases[input]);
     });
   });
 
@@ -62,15 +62,15 @@ describe('Tests for json_formatting', function() {
   };
 
   Object.keys(objectTestCases).forEach(function(input){
-    it('parse_object: ' + input + ' should equal ' + JSON.stringify(objectTestCases[input]), function() {
-      expect(json_formatting.parse_object(input).result).to.deep.equal(objectTestCases[input]);
+    it('parseObject: ' + input + ' should equal ' + JSON.stringify(objectTestCases[input]), function() {
+      expect(json_formatting.parseObject(input).result).to.deep.equal(objectTestCases[input]);
     });
   });
 
   let dataTestCases = Object.assign({}, arrayTestCases, stringTestCases, objectTestCases);
   Object.keys(dataTestCases).forEach(function(input){
-    it('parse_data: ' + input + ' should equal ' + JSON.stringify(dataTestCases[input]), function() {
-      expect(json_formatting.parse_data(input).result).to.deep.equal(dataTestCases[input]);
+    it('parseData: ' + input + ' should equal ' + JSON.stringify(dataTestCases[input]), function() {
+      expect(json_formatting.parseData(input).result).to.deep.equal(dataTestCases[input]);
     });
   });
 
@@ -80,10 +80,10 @@ describe('Tests for json_formatting', function() {
       return;
     }
     let expectedFileName = fileName.replace('.json', '.expected.txt');
-    let testCase = json_formatting.parse_data(fs.readFileSync(path.resolve(testDirectory, fileName), 'utf8')).result;
+    let testCase = json_formatting.parseData(fs.readFileSync(path.resolve(testDirectory, fileName), 'utf8')).result;
     let expected = fs.readFileSync(path.resolve(testDirectory, expectedFileName), 'utf8').split('\r\n').join('\n');
     it(fileName, function() {
-      expect(json_formatting.stringify_data(testCase)).to.equal(expected);
+      expect(json_formatting.stringifyData(testCase)).to.equal(expected);
     });    
   });
 
