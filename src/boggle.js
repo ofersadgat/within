@@ -101,7 +101,7 @@ var solveGivenPoints = function(board, points){
 	let lastPoint = points[points.length - 1];
 	let bestSolution = null;
 	if (dictionary.hasWord(word)){
-		bestSolution = {word: word, score: score(board, points)}
+		bestSolution = {word: word, score: score(board, points)};
 	}
 	if (dictionary.isPrefix(word)){
 		let up = [lastPoint[0] - 1, lastPoint[1]];

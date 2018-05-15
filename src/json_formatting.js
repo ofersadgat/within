@@ -93,7 +93,6 @@ let parse_string = function(data) {
 	if (!data.startsWith('"')){
 		return null;
 	}
-	let wasEscape = false;
 	data = data.substring(1);
 	let i;
 	let result = '';
@@ -165,7 +164,7 @@ let parse_data = function(data) {
 			next: data,
 		};
 	}
-}
+};
 
 /*
  * visualize_data will parse the json like string and output our desired format to the console.
@@ -175,7 +174,9 @@ let parse_data = function(data) {
  */
 let visualize_data = function( data ){
 	let parsed = parse_data(data).result;
+	/* eslint-disable no-console */
 	console.log(stringify_data(parsed));
+	/* eslint-enable no-console */
 };
 
 /*
